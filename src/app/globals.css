@@ -2,20 +2,152 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: #198e88;
+    --color-primary-dark: #167d78;
+    --color-primary-light: #e6f3f2;
+    --color-accent: #4db3a7;
   }
 }
 
+@layer utilities {
+  .text-primary-dark {
+    color: var(--color-primary-dark);
+  }
+
+  .bg-primary-dark {
+    background-color: var(--color-primary-dark);
+  }
+}
+
+/* Global Styles */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply text-neutral-800 bg-white;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Typography */
+h1 { @apply text-4xl font-extrabold text-primary tracking-tight; }
+h2 { @apply text-3xl font-bold text-primary-dark; }
+h3 { @apply text-2xl font-semibold text-primary; }
+
+/* Advanced Button Styles */
+.btn {
+  @apply inline-flex items-center justify-center 
+         px-6 py-3 
+         border border-transparent 
+         text-base font-medium 
+         rounded-full 
+         shadow-md 
+         transition duration-300 
+         transform hover:scale-105 
+         focus:outline-none focus:ring-2 
+         focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-primary text-white 
+         hover:bg-primary-dark 
+         focus:ring-primary;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-white 
+         rounded-xl 
+         overflow-hidden 
+         shadow-lg 
+         transition duration-300 
+         hover:shadow-xl 
+         transform hover:-translate-y-2;
+}
+
+/* Form Styles */
+.form-input {
+  @apply block w-full 
+         px-4 py-3 
+         border border-neutral-300 
+         rounded-lg 
+         shadow-sm 
+         focus:border-primary 
+         focus:ring 
+         focus:ring-primary 
+         focus:ring-opacity-50 
+         transition duration-200;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-dark;
+}
+
+/* Responsive Typography */
+@screen sm {
+  body {
+    font-size: 16px;
+  }
+}
+
+@screen md {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Utility Classes */
+.gradient-bg {
+  background: linear-gradient(to right, #198e88, #e6f3f2);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #198e88, #4db3a7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl;
+}
+
+/* Dark Mode (Optional) */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
 }
