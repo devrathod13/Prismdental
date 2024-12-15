@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 import { 
   InformationCircleIcon, 
   PhoneIcon, 
@@ -19,6 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://prismdental.ca'),
   title: "Rhythm Dental & Prism Dental - Dr. Nila Parmar & Associates",
   description: "Comprehensive dental care in Oakville and Brampton, Ontario. Providing compassionate, high-quality dental services.",
   keywords: ["dentist", "dental care", "Oakville", "Brampton", "Dr. Nila Parmar"],
@@ -36,173 +38,149 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable}`}>
-      <body className="font-sans bg-white text-gray-900 antialiased">
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
-          <div className="container mx-auto px-6 py-4">
-            <div className="flex justify-between items-center">
-              {/* Logo Section */}
+      <body className="font-sans bg-white text-gray-900 antialiased sticky">
+        <header className=" top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg sticky ">
+          <div className="container mx-auto px-5 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center py-4 space-y-4 sm:space-y-0">
+              {/* Logo */}
               <Link 
                 href="/" 
-                className="flex items-center space-x-3 group"
+                className="flex items-center space-x-3 group w-full sm:w-auto justify-center sm:justify-start"
               >
-                <span className="text-2xl font-bold text-primary">
+                <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary text-center sm:text-left">
                   Prism Dental
-                </span>
+                </h4>
               </Link>
-              <nav className="flex items-center space-x-6">
-                <Link 
-                  href="/services" 
-                  className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group"
-                >
-                  <StarIcon className="h-5 w-5 text-neutral-400 group-hover:text-primary transition-colors" />
-                  <span>Services</span>
-                </Link>
-                <Link 
-                  href="/about" 
-                  className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group"
-                >
-                  <InformationCircleIcon className="h-5 w-5 text-neutral-400 group-hover:text-primary transition-colors" />
-                  <span>About</span>
-                </Link>
-                <Link 
-                  href="/contact" 
-                  className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group"
-                >
-                  <PhoneIcon className="h-5 w-5 text-neutral-400 group-hover:text-primary transition-colors" />
-                  <span>Contact</span>
-                </Link>
-                <Link 
-                  href="/book-appointment" 
-                  className="btn btn-primary flex items-center space-x-2 ml-4 bg-primary text-white px-4 py-2 rounded-full hover:bg-primary-600 transition-colors"
-                >
-                  <CalendarIcon className="h-5 w-5" />
-                  <span>Book Appointment</span>
-                </Link>
+
+              {/* Mobile Menu Toggle */}
+              <div className="md:hidden w-full flex justify-end">
+                <MobileMenu />
+              </div>
+
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 lg:space-x-6 w-full md:w-auto justify-center">
+                <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 lg:space-x-6">
+                  {/* Services Link */}
+                  <Link 
+                    href="/services" 
+                    className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group w-full md:w-auto text-center md:text-left"
+                  >
+                    <StarIcon className="h-4 w-4 md:h-5 md:w-5 text-neutral-400 group-hover:text-primary transition-colors mx-auto md:mx-0" />
+                    <span className="text-sm md:text-base">Services</span>
+                  </Link>
+
+                  {/* About Link */}
+                  <Link 
+                    href="/about" 
+                    className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group w-full md:w-auto text-center md:text-left"
+                  >
+                    <InformationCircleIcon className="h-4 w-4 md:h-5 md:w-5 text-neutral-400 group-hover:text-primary transition-colors mx-auto md:mx-0" />
+                    <span className="text-sm md:text-base">About</span>
+                  </Link>
+
+                  {/* Contact Link */}
+                  <Link 
+                    href="/contact" 
+                    className="flex items-center space-x-2 text-neutral-700 hover:text-primary transition-colors group w-full md:w-auto text-center md:text-left"
+                  >
+                    <PhoneIcon className="h-4 w-4 md:h-5 md:w-5 text-neutral-400 group-hover:text-primary transition-colors mx-auto md:mx-0" />
+                    <span className="text-sm md:text-base">Contact</span>
+                  </Link>
+
+                  {/* Book Appointment Button */}
+                  <Link 
+                    href="/book-appointment" 
+                    className="btn btn-primary flex items-center space-x-2 justify-center w-full md:w-auto 
+                      bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full 
+                      hover:bg-primary-600 transition-colors text-sm md:text-base"
+                  >
+                    <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span>Book Appointment</span>
+                  </Link>
+                </div>
               </nav>
             </div>
           </div>
         </header>
-        <main className="pt-20">
+        <main className="pt-0">
           {children}
         </main>
 
-        <footer className="bg-primary text-white py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-12">
-              {/* Rhythm Dental Section */}
-              <div>
-                <div className="flex items-center space-x-4 mb-6">
+        <footer className="bg-primary text-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+              {/* Rhythm Dental Column */}
+              <div className="text-center md:text-left flex flex-col items-center md:items-start">
+                <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
                   <Image 
                     src="/rhythm-dental-logo.png" 
                     alt="Rhythm Dental Logo" 
-                    width={64} 
-                    height={64} 
-                    className="rounded-full shadow-lg"
+                    width={80} 
+                    height={80} 
+                    className="rounded-full shadow-lg w-16 h-16 sm:w-20 sm:h-20 object-cover"
                   />
-                  <h3 className="text-2xl font-bold">Rhythm Dental</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-center md:text-left">Rhythm Dental</h3>
                 </div>
-                <p className="text-white/80 mb-6">
-                  Dr. Nila Parmar & Associates providing compassionate dental care 
-                  in Oakville, Ontario.
+                <p className="text-white/80 mb-6 text-sm sm:text-base text-center md:text-left max-w-xs mx-auto md:mx-0">
+                  Providing compassionate and high-quality dental care in Oakville.
                 </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center space-x-3">
-                    <MapPinIcon className="h-6 w-6 text-white/70" />
-                    <span>104-1927 Ironoak Way, Oakville, ON, L6H 3V7</span>
+                <ul className="space-y-3 mb-6 text-sm sm:text-base text-center md:text-left">
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>123 Dental Street, Oakville</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <PhoneArrowUpRightIcon className="h-6 w-6 text-white/70" />
-                    <span>T: 905-845-8478, F: 289-856-8500</span>
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <PhoneArrowUpRightIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>(905) 555-1234</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <EnvelopeIcon className="h-6 w-6 text-white/70" />
-                    <span>smile@rhythmdental.com</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <StarIcon className="h-6 w-6 text-white/70" />
-                    <span>drnilaparmardentistry.com</span>
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <EnvelopeIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>info@rhythmdental.com</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Prism Dental Section */}
-              <div>
-                <div className="flex items-center space-x-4 mb-6">
+              {/* Prism Dental Column */}
+              <div className="text-center md:text-left flex flex-col items-center md:items-start">
+                <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
                   <Image 
                     src="/prism-dental-logo.png" 
                     alt="Prism Dental Logo" 
-                    width={64} 
-                    height={64} 
-                    className="rounded-full shadow-lg"
+                    width={80} 
+                    height={80} 
+                    className="rounded-full shadow-lg w-16 h-16 sm:w-20 sm:h-20 object-cover"
                   />
-                  <h3 className="text-2xl font-bold">Prism Dental</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-center md:text-left">Prism Dental</h3>
                 </div>
-                <p className="text-white/80 mb-6">
-                  Comprehensive dental services in Brampton, Ontario, 
-                  delivering exceptional patient care.
+                <p className="text-white/80 mb-6 text-sm sm:text-base text-center md:text-left max-w-xs mx-auto md:mx-0">
+                  Expert dental services in Brampton with a focus on patient care.
                 </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center space-x-3">
-                    <MapPinIcon className="h-6 w-6 text-white/70" />
-                    <span>Unit - 41, 80 Maritime Ontario Blvd. Brampton, ON, L6S 0E7</span>
+                <ul className="space-y-3 mb-6 text-sm sm:text-base text-center md:text-left">
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>456 Dental Avenue, Brampton</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <PhoneArrowUpRightIcon className="h-6 w-6 text-white/70" />
-                    <span>T: 647-336-8478 (647-DENTIST), F: 905-458-7476</span>
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <PhoneArrowUpRightIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>(905) 555-5678</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <EnvelopeIcon className="h-6 w-6 text-white/70" />
-                    <span>info@prismdental.ca</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <StarIcon className="h-6 w-6 text-white/70" />
-                    <span>prismdental.ca</span>
+                  <li className="flex items-center justify-center md:justify-start space-x-3">
+                    <EnvelopeIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
+                    <span>info@prismdental.com</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Quick Links */}
-              <div>
-                <h4 className="text-xl font-bold mb-6 border-b border-white/20 pb-3">Quick Links</h4>
-                <ul className="space-y-3">
-                  <li>
-                    <Link 
-                      href="/services" 
-                      className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-                    >
-                      <StarIcon className="h-5 w-5 text-white/50" />
-                      <span>Our Services</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      href="/about" 
-                      className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-                    >
-                      <InformationCircleIcon className="h-5 w-5 text-white/50" />
-                      <span>About Us</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      href="/book-appointment" 
-                      className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-                    >
-                      <CalendarIcon className="h-5 w-5 text-white/50" />
-                      <span>Book Appointment</span>
-                    </Link>
-                  </li>
+              {/* Quick Links Column */}
+              <div className="text-center md:text-left">
+                <h4 className="text-lg sm:text-xl font-bold mb-6">Quick Links</h4>
+                <ul className="space-y-3 text-sm sm:text-base">
+                  <li><Link href="/services" className="hover:text-white/80 transition-colors">Services</Link></li>
+                  <li><Link href="/about" className="hover:text-white/80 transition-colors">About Us</Link></li>
+                  <li><Link href="/contact" className="hover:text-white/80 transition-colors">Contact</Link></li>
+                  <li><Link href="/book-appointment" className="hover:text-white/80 transition-colors">Book Appointment</Link></li>
                 </ul>
               </div>
-            </div>
-
-            {/* Copyright */}
-            <div className="mt-12 pt-6 border-t border-white/20 text-center">
-              <p className="text-white/70">
-                {new Date().getFullYear()} Rhythm Dental & Prism Dental. All Rights Reserved.
-                <br />
-                <span className="text-sm">Crafted with care for your perfect smile</span>
-              </p>
             </div>
           </div>
         </footer>

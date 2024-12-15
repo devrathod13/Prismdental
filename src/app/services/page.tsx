@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const services = [
   {
     title: "Dental Cleaning",
     description: "Professional cleaning to remove plaque and tartar, preventing cavities and gum disease.",
-    image: "/cleaning.jpg",
     details: [
       "Thorough plaque and tartar removal",
       "Polishing and stain removal",
@@ -16,7 +14,6 @@ const services = [
   {
     title: "Teeth Whitening",
     description: "Professional whitening treatments to brighten your smile and boost confidence.",
-    image: "/whitening.jpg",
     details: [
       "In-office laser whitening",
       "Take-home whitening kits",
@@ -27,7 +24,6 @@ const services = [
   {
     title: "Dental Braces",
     description: "Orthodontic solutions to align teeth and improve dental structure.",
-    image: "/braces.jpg",
     details: [
       "Traditional metal braces",
       "Ceramic clear braces",
@@ -38,7 +34,6 @@ const services = [
   {
     title: "Root Canal",
     description: "Advanced treatment to save and restore damaged or infected teeth.",
-    image: "/root-canal.jpg",
     details: [
       "Pain-free procedure",
       "Advanced imaging techniques",
@@ -59,13 +54,6 @@ export default function ServicesPage() {
               key={index} 
               className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
-              <Image 
-                src={service.image} 
-                alt={service.title} 
-                width={600} 
-                height={400} 
-                className="w-full h-64 object-cover"
-              />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-4 text-blue-700">{service.title}</h2>
                 <p className="text-gray-600 mb-4">{service.description}</p>
