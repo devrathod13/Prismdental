@@ -21,11 +21,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://prismdental.ca'),
-  title: "Rhythm Dental & Prism Dental - Dr. Nila Parmar & Associates",
+  title: "Prism Dental - Dr. Nila Parmar & Associates",
   description: "Comprehensive dental care in Oakville and Brampton, Ontario. Providing compassionate, high-quality dental services.",
   keywords: ["dentist", "dental care", "Oakville", "Brampton", "Dr. Nila Parmar"],
   openGraph: {
-    title: "Rhythm Dental & Prism Dental",
+    title: "Prism Dental - Dr. Nila Parmar & Associates",
     description: "Expert dental care by Dr. Nila Parmar and Associates",
     images: [{ url: '/dental-og-image.jpg' }]
   }
@@ -42,15 +42,15 @@ export default function RootLayout({
         <header className=" top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg sticky ">
           <div className="container mx-auto px-5 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row justify-between items-center py-4 space-y-4 sm:space-y-0">
-              {/* Logo */}
               <Link 
                 href="/" 
                 className="flex items-center space-x-3 group w-full sm:w-auto justify-center sm:justify-start"
               >
-                <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary text-center sm:text-left">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary text-center sm:text-left">
                   Prism Dental
-                </h4>
+                </h1>
               </Link>
+
 
               {/* Mobile Menu Toggle */}
               <div className="md:hidden w-full flex justify-end">
@@ -112,13 +112,16 @@ export default function RootLayout({
               {/* Rhythm Dental Column */}
               <div className="text-center md:text-left flex flex-col items-center md:items-start">
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-                  <Image 
-                    src="/rhythm-dental-logo.png" 
-                    alt="Rhythm Dental Logo" 
-                    width={80} 
-                    height={80} 
-                    className="rounded-full shadow-lg w-16 h-16 sm:w-20 sm:h-20 object-cover"
-                  />
+                  <div className="absolute w-16 h-16 sm:w-20 sm:h-20 shrink-0">
+                    <Image 
+                      src="/rhythm-dental-logo.png" 
+                      alt="Rhythm Dental Logo" 
+                      fill
+                      sizes="(max-width: 640px) 64px, 80px"
+                      priority
+                      className="rounded-full shadow-lg object-cover"
+                    />
+                  </div>
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-center md:text-left">Rhythm Dental</h3>
                 </div>
                 <p className="text-white/80 mb-6 text-sm sm:text-base text-center md:text-left max-w-xs mx-auto md:mx-0">
@@ -143,13 +146,16 @@ export default function RootLayout({
               {/* Prism Dental Column */}
               <div className="text-center md:text-left flex flex-col items-center md:items-start">
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-                  <Image 
-                    src="/prism-dental-logo.png" 
-                    alt="Prism Dental Logo" 
-                    width={80} 
-                    height={80} 
-                    className="rounded-full shadow-lg w-16 h-16 sm:w-20 sm:h-20 object-cover"
-                  />
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0">
+                    <Image 
+                      src="/prism-dental-logo.png" 
+                      alt="Prism Dental Logo" 
+                      fill
+                      sizes="(max-width: 640px) 64px, 80px"
+                      priority
+                      className="rounded-full shadow-lg object-cover"
+                    />
+                  </div>
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-center md:text-left">Prism Dental</h3>
                 </div>
                 <p className="text-white/80 mb-6 text-sm sm:text-base text-center md:text-left max-w-xs mx-auto md:mx-0">
@@ -158,11 +164,11 @@ export default function RootLayout({
                 <ul className="space-y-3 mb-6 text-sm sm:text-base text-center md:text-left">
                   <li className="flex items-center justify-center md:justify-start space-x-3">
                     <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
-                    <span>456 Dental Avenue, Brampton</span>
+                    <span>Unit # 41, 80 Maritime Ontario Blvd, Brampton, ON L6S 0E7</span>
                   </li>
                   <li className="flex items-center justify-center md:justify-start space-x-3">
                     <PhoneArrowUpRightIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
-                    <span>(905) 555-5678</span>
+                    <span>(647) 336-8478</span>
                   </li>
                   <li className="flex items-center justify-center md:justify-start space-x-3">
                     <EnvelopeIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
