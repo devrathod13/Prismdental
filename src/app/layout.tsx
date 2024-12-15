@@ -38,8 +38,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable}`}>
-      <body className="font-sans bg-white text-gray-900 antialiased sticky">
-        <header className=" top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg sticky ">
+      <body className="font-sans bg-white text-gray-900 antialiased">
+        <header className="top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg sticky">
           <div className="container mx-auto px-5 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row justify-between items-center py-4 space-y-4 sm:space-y-0">
               <Link 
@@ -50,7 +50,6 @@ export default function RootLayout({
                   Prism Dental
                 </h1>
               </Link>
-
 
               {/* Mobile Menu Toggle */}
               <div className="md:hidden w-full flex justify-end">
